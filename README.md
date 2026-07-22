@@ -23,7 +23,7 @@ This repo runs its own system — see [docs/decisions/](docs/decisions/) for our
 
 Choose **user** scope when prompted. The skills (`/learn`, `/log-decision`, `/research`, `/plan`) then follow you into every project on your machine, including ones that never adopted the kit. Repo scope and user scope stack fine.
 
-**Updates.** Custom marketplaces don't auto-update by default. Pick up playbook improvements with `/plugin update agent-playbook@agent-playbook`, or enable auto-update once in the `/plugin` menu. Repo-scoped installs follow the same rule — one teammate updating doesn't update the others, so put this line in your onboarding doc.
+**Updates.** The kit's settings set `"autoUpdate": true` on the marketplace entry; if your Claude Code version honors it at project scope, updates are fully automatic (new commits here = new plugin versions, applied on next session launch). Belt-and-suspenders for teammates: enable auto-update once in `/plugin` → Marketplaces → agent-playbook. Manual fallback any time: `/plugin update agent-playbook@agent-playbook` (also works non-interactively as `claude plugin update ...` for cron/CI).
 
 ## Adopt in a repo in ~10 minutes
 
