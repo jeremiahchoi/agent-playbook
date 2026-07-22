@@ -27,6 +27,10 @@ Choose **user** scope when prompted. The skills (`/learn`, `/log-decision`, `/re
 
 ## Adopt in a repo in ~10 minutes
 
+**Fastest path:** if you have the plugin installed (user scope), open the repo and run `/adopt` — it retrofits everything below automatically, deferring to any conventions the repo already has.
+
+**Manual path:**
+
 1. Copy the contents of `kit/` into your repo root (`.claude/`, `docs/`, `CLAUDE.md.template`).
 2. Fill in `CLAUDE.md.template` (project description, exact commands, stack, boundaries) and rename it `CLAUDE.md`. Keep it ≤ 60 lines.
 3. Symlink it for other tools: `ln -s CLAUDE.md AGENTS.md`.
