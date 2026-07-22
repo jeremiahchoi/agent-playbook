@@ -1,0 +1,44 @@
+# PROJECT_NAME
+
+ONE_PARAGRAPH_DESCRIPTION (what this is, for whom — 2 sentences max).
+
+## Stack
+
+- LANGUAGE_AND_VERSION, FRAMEWORK_AND_VERSION, KEY_LIBS_WITH_VERSIONS
+
+## Commands
+
+- Install: INSTALL_COMMAND
+- Dev server: DEV_COMMAND
+- Test (single file — prefer this): TEST_SINGLE_COMMAND
+- Test (full): TEST_ALL_COMMAND
+- Lint/format: LINT_COMMAND
+- Typecheck: TYPECHECK_COMMAND
+
+## Boundaries
+
+Always:
+- Run TYPECHECK_COMMAND and relevant tests after a series of changes
+- Follow existing patterns; EXAMPLE_FILE is a good reference
+
+Ask first:
+- Database schema or migration changes
+- Adding new dependencies
+- ANYTHING_ELSE_RISKY
+
+Never:
+- Commit secrets or .env files
+- Edit VENDOR_OR_GENERATED_DIRS
+- Push directly to MAIN_BRANCH
+
+## Knowledge
+
+- Before architectural changes: check docs/decisions/
+- Before working in DOMAIN_X: read docs/gotchas/DOMAIN_X.md
+- Non-trivial work: /research then /plan before implementing
+- Made a mistake this session? Run /learn before finishing. Made a judgment call? /log-decision.
+
+## Style
+
+<!-- Only rules a linter can't enforce, each traceable to a real failure.
+     One real code snippet beats three paragraphs of description. -->
