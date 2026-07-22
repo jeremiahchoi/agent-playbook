@@ -1,0 +1,7 @@
+{
+  "name": "agent-playbook",
+  "description": "Compounding agent workflows: /learn, /log-decision, /research, /plan skills and a code-simplifier reviewer.",
+  "author": {
+    "name": "Jeremiah Choi"
+  }
+}

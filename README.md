@@ -2,10 +2,11 @@
 
 A living playbook for working with coding agents (Claude Code first; tool-agnostic where possible). Built from published practice at Anthropic, Cognition, HumanLayer, and the engineers running the most agent-heavy workflows in the industry — see [PHILOSOPHY.md](PHILOSOPHY.md) for the principles and sources, updated as new research lands.
 
-Two parts:
+Three parts:
 
-- **[playbook/](playbook/)** — the guides your team reads once: context files, logging knowledge, the core workflow, verification, token optimization, rollout.
-- **[kit/](kit/)** — the files your team copies into a repo: CLAUDE.md template, docs scaffolding, working skills, subagents, and settings.
+- **[playbook/](playbook/)** — the guides your team reads once: context files, logging knowledge, the core workflow, verification, token optimization, rollout, client work.
+- **[kit/](kit/)** — the project-state files your team copies into a repo **once** (they're meant to diverge): CLAUDE.md template, docs scaffolding, verify-app, settings.
+- **[plugins/](plugins/)** — the workflow machinery (`/learn`, `/log-decision`, `/research`, `/plan`, code-simplifier), served from this repo as a Claude Code plugin. Adopting repos pin it in settings.json, so **updating this repo updates every adopter** — no re-copying.
 
 This repo runs its own system — see [docs/decisions/](docs/decisions/) for our decision log and [CLAUDE.md](CLAUDE.md) for how agents work here.
 
@@ -14,9 +15,11 @@ This repo runs its own system — see [docs/decisions/](docs/decisions/) for our
 1. Copy the contents of `kit/` into your repo root (`.claude/`, `docs/`, `CLAUDE.md.template`).
 2. Fill in `CLAUDE.md.template` (project description, exact commands, stack, boundaries) and rename it `CLAUDE.md`. Keep it ≤ 60 lines.
 3. Symlink it for other tools: `ln -s CLAUDE.md AGENTS.md`.
-4. Adjust `.claude/settings.json` allowlist to your build/test/lint commands.
+4. In `.claude/settings.json`: keep the plugin keys as-is, adjust the allowlist to your build/test/lint commands.
 5. Fill in `.claude/agents/verify-app.md` with how to actually run and check your app.
 6. Commit all of it. It's team config — review changes like code.
+
+The skills themselves aren't copied: when anyone clones the repo and trusts the workspace, the settings' `extraKnownMarketplaces`/`enabledPlugins` keys register this repo's plugin marketplace and enable the skills automatically. They update centrally when this repo updates.
 
 Then run the loop that makes it compound:
 

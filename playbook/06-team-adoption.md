@@ -5,7 +5,7 @@ The tooling is the easy part. Adoption lives or dies on two things: a five-minut
 ## Rollout path
 
 **Week 1 — one repo, the kit, one champion.**
-Copy `kit/` in, fill the CLAUDE.md template (≤ 60 lines), wire `verify-app` to real commands, commit. The champion runs the compounding loop personally: every agent mistake → `/learn`; every judgment call → `/log-decision`.
+Copy `kit/` in, fill the CLAUDE.md template (≤ 60 lines), wire `verify-app` to real commands, commit. The workflow skills arrive via the agent-playbook plugin pinned in `settings.json` — teammates get them (and future updates) automatically on workspace trust, no install step. The champion runs the compounding loop personally: every agent mistake → `/learn`; every judgment call → `/log-decision`.
 
 **Weeks 2–3 — make capture visible.**
 Demo in standup/Slack when a captured gotcha saves someone. Cognition's observation: adoption spreads when engineers *see teammates' results*, not when they're told to adopt. Start requiring plans (`docs/plans/`) for non-trivial agent work and reviewing plans instead of only PRs.

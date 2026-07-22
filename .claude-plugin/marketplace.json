@@ -1,0 +1,13 @@
+{
+  "name": "agent-playbook",
+  "owner": {
+    "name": "Jeremiah Choi"
+  },
+  "plugins": [
+    {
+      "name": "agent-playbook",
+      "source": "./plugins/agent-playbook",
+      "description": "Compounding agent workflows: /learn, /log-decision, /research, /plan skills and a code-simplifier reviewer. Companion to the agent-playbook guides."
+    }
+  ]
+}

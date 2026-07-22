@@ -1,4 +1,15 @@
 {
+  "extraKnownMarketplaces": {
+    "agent-playbook": {
+      "source": {
+        "source": "github",
+        "repo": "jeremiahchoi/agent-playbook"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "agent-playbook@agent-playbook": true
+  },
   "permissions": {
     "allow": [
       "Bash(git status)",
