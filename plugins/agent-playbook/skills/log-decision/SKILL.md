@@ -1,6 +1,6 @@
 ---
 name: log-decision
-description: Record a decision made in this session as a mini-ADR in docs/decisions/. Run whenever a session settles an architectural or process question worth remembering.
+description: Record a decision as a mini-ADR (or the repo's own decision-log format). Use PROACTIVELY, without being asked, whenever a session settles an architectural, product, or process question — a decision logged only in chat will be silently reversed by a future session that never saw it.
 ---
 
 # Log decision

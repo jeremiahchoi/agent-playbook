@@ -1,6 +1,6 @@
 ---
 name: code-simplifier
-description: Reviews a just-completed change for simplification — dead code, duplication, needless abstraction — in a fresh context with no attachment to the code. Use after implementation, before the PR.
+description: Reviews a just-completed change for simplification — dead code, duplication, needless abstraction — in a fresh context with no attachment to the code. Use PROACTIVELY after completing any non-trivial implementation, before putting up the PR.
 tools: Read, Grep, Glob, Bash
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Scan the current session for reusable lessons and file them into docs/gotchas/ or CLAUDE.md. Run at the end of any session where a mistake was made or something non-obvious was discovered.
+description: Capture this session's lessons into docs/gotchas/ or CLAUDE.md. Use PROACTIVELY, without being asked, when wrapping up any task where you made a mistake, were corrected by the user, or discovered something non-obvious the hard way. A lesson that stays in chat is lost.
 ---
 
 # Learn — capture this session's lessons

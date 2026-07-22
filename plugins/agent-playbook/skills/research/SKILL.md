@@ -1,6 +1,6 @@
 ---
 name: research
-description: Research a task or question about the codebase and write a compact research artifact to docs/research/. First phase of research → plan → implement; use before planning any non-trivial change.
+description: Research the codebase and write a compact artifact to docs/research/. Use PROACTIVELY before implementing any change that touches multiple files or an unfamiliar area — do not start coding a non-trivial task without a research artifact. First phase of research → plan → implement.
 ---
 
 # Research: $ARGUMENTS

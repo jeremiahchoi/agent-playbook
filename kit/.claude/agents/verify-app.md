@@ -1,6 +1,6 @@
 ---
 name: verify-app
-description: Verifies that the app actually works end-to-end after a change — runs it and exercises the affected flow, not just tests and typecheck. Use before declaring any non-trivial change done.
+description: Verifies that the app actually works end-to-end after a change — runs it and exercises the affected flow, not just tests and typecheck. Use PROACTIVELY before declaring any non-trivial change done — never report success without its evidence.
 tools: Bash, Read, Grep, Glob
 ---
 

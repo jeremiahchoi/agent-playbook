@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Turn a research artifact into a phased implementation plan in docs/plans/, with verification per phase. Second phase of research → plan → implement.
+description: Turn a research artifact into a phased implementation plan in docs/plans/, with verification per phase. Use PROACTIVELY after research and before writing any implementation code for non-trivial work. Second phase of research → plan → implement.
 ---
 
 # Plan: $ARGUMENTS
