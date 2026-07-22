@@ -10,6 +10,21 @@ Three parts:
 
 This repo runs its own system — see [docs/decisions/](docs/decisions/) for our decision log and [CLAUDE.md](CLAUDE.md) for how agents work here.
 
+## Setup: getting the workflows
+
+**For a team repo — zero commands.** Adopt the kit (next section). After that, anyone who clones the repo, opens it in Claude Code, and accepts the one-time "trust this workspace" prompt gets the skills automatically — `.claude/settings.json` registers this repo's plugin marketplace and enables the plugin. Nothing to install beyond Claude Code itself.
+
+**For yourself, in every project — one-time install.** In the Claude Code terminal CLI (any directory), run:
+
+```
+/plugin marketplace add jeremiahchoi/agent-playbook
+/plugin install agent-playbook@agent-playbook
+```
+
+Choose **user** scope when prompted. The skills (`/learn`, `/log-decision`, `/research`, `/plan`) then follow you into every project on your machine, including ones that never adopted the kit. Repo scope and user scope stack fine.
+
+**Updates.** Custom marketplaces don't auto-update by default. Pick up playbook improvements with `/plugin update agent-playbook@agent-playbook`, or enable auto-update once in the `/plugin` menu. Repo-scoped installs follow the same rule — one teammate updating doesn't update the others, so put this line in your onboarding doc.
+
 ## Adopt in a repo in ~10 minutes
 
 1. Copy the contents of `kit/` into your repo root (`.claude/`, `docs/`, `CLAUDE.md.template`).
