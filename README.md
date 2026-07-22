@@ -58,5 +58,3 @@ Then run the loop that makes it compound:
 | [06 — Team adoption](playbook/06-team-adoption.md) | Rollout, ownership, review norms, anti-patterns |
 | [07 — Client-facing work](playbook/07-client-work.md) | Distilling client emails/decisions without wasting tokens; per-client context |
 | [08 — The automation ladder](playbook/08-automation.md) | Making the workflow fire in the background: descriptions → bootstrap → Stop hooks → meta-skills |
-
-Want to *see* it run? [examples/demo-script.md](examples/demo-script.md) is five prompts that make the background workflow fire in an adopted repo, with pass/fail checkpoints.
