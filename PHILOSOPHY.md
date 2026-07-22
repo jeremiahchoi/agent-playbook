@@ -70,6 +70,12 @@ The best knowledge systems store *when to recall* alongside *what to know* (Cogn
 
 *Backed by:* Cognition/Devin knowledge system, Claude Code rules/skills loading model.
 
+### 11. Proactivity is engineered, not hoped for
+
+"The agent should just run the workflow in the background" requires explicit machinery, in escalating strength: (1) trigger-oriented skill descriptions ("Use PROACTIVELY when…"), (2) standing CLAUDE.md policy, (3) a SessionStart hook injecting the working policy every session — Superpowers' core mechanism, whose bootstrap makes skill use mandatory ("if you have a skill to do something, you must use it"), (4) Stop hooks as deterministic tripwires that block turn-end until checks ran, (5) meta-skills that chain the whole pipeline behind one command (Boris Cherny's /go: implement → verify → simplify → PR). Climb the ladder only when the layer below observably misses.
+
+*Backed by:* Superpowers (Jesse Vincent), community Stop-hook patterns, Boris Cherny's /go.
+
 ---
 
 ## Source library
@@ -91,6 +97,8 @@ The best knowledge systems store *when to recall* alongside *what to know* (Cogn
 | 2026-07-21 | [Compound Engineering](https://every.to/guides/compound-engineering) | Every / Cora (Kieran Klaassen) | Every PR review teaches the system; every bug becomes a prevention system |
 | 2026-07-21 | [AGENTS.md standard](https://agents.md/) | Linux Foundation / multi-vendor | Cross-tool instruction file format; symlink CLAUDE.md ↔ AGENTS.md |
 | 2026-07-21 | [How AI coding agents use ADRs](https://mnemehq.com/insights/how-ai-coding-agents-use-adrs/) | Mneme | ADRs as machine-readable constraints agents check and propose |
+| 2026-07-22 | [Superpowers](https://blog.fsck.com/2025/10/09/superpowers/) + [repo](https://github.com/obra/superpowers) | Jesse Vincent (obra) | SessionStart bootstrap injection; mandatory-skill-use policy; skills tested on subagents under pressure; mined 2,249 session summaries for skill gaps |
+| 2026-07-22 | [Stop hooks](https://amitkoth.com/claude-code-stop-hooks/) + [task enforcement](https://claudefa.st/blog/tools/hooks/stop-hook-task-enforcement) | Community | Stop hook blocks turn-end until checks pass; stop_hook_active guard; keep checks fast |
 | 2026-07-21 | [Scaling an agency with Claude Code](https://databar.ai/blog/article/how-to-scale-your-agency-with-claude-code) | Databar | Per-client context files that compound per engagement |
 | 2026-07-21 | [Context inheritance for multi-client projects](https://www.mindstudio.ai/blog/context-inheritance-claude-code-multi-client-projects) | MindStudio | Directory-stacked CLAUDE.md as per-client recall trigger |
 | 2026-07-21 | [Agent mail MCP](https://composio.dev/toolkits/agent_mail/framework/claude-code) + [AgentMail](https://www.agentmail.to/insights/email-ai-agent) | Composio / AgentMail | Fetch-specific-message-by-ID pattern; comms retrieved on demand, never preloaded |
