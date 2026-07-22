@@ -22,6 +22,8 @@ Add the PR-review capture loop (tag `@.claude` → GitHub Action commits the cor
 
 ## Measure whether it's working
 
+Run `/pulse` in the repo — it scans the artifacts (gotcha entries, decisions, plans with verification, CLAUDE.md budget) and reports a scorecard against the targets below.
+
 - **Correction rate** — are you correcting the agent for the same thing twice? Then the first correction wasn't captured. This number should visibly fall over weeks.
 - **CLAUDE.md size** — should stay flat or shrink while gotchas/rules/hooks grow. Growth in the always-loaded file is a smell.
 - **Fresh-session test** — ask a new session to summarize the rules; if it misses one, the file isn't working.

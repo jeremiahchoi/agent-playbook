@@ -6,4 +6,6 @@
 
 > Skill/agent descriptions are the auto-invocation trigger — write them for the *model*, not for a human reading a menu. "Run at the end of any session where…" reads fine but never fires; "Use PROACTIVELY, without being asked, when…" does. Users want the workflow to run in the background, not to memorize slash commands. (2026-07, jj feedback on bee)
 
+> /adopt originally only handled *empty* placeholders — real pre-existing markdown (notes, TODOs, overlapping docs) stuck around untouched and cluttered adopted repos. Consolidation is now an explicit /adopt step: classify every md, merge to one canonical home per topic, migrate status items to the tracker, always with approval. (2026-07, jj feedback)
+
 > Repos accumulate empty placeholder docs (bee: docs/decisions.md and docs/lessons.md, both 0 bytes, both bypassed by the real convention). During retrofit, convert them to pointers at the live location — deleting them invites someone to recreate them; leaving them empty invites a duplicate log. (2026-07, bee retrofit)

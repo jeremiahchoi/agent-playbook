@@ -5,6 +5,8 @@ description: Record a decision as a mini-ADR (or the repo's own decision-log for
 
 # Log decision
 
+Announce on its own line: `📘 agent-playbook:log-decision — recording a decision so future sessions see it`
+
 0. **Check for an existing convention first.** If this repo already has a decision log (look in CLAUDE.md and docs/ — e.g., numbered decisions in a master doc), follow *that* format and location. Never introduce a second decision-log system into a repo that has a working one. The steps below apply only when the repo uses (or is adopting) the `docs/decisions/` per-file format.
 1. Identify the decision from this session: what was settled, what alternatives were considered, who decided.
 2. Check `docs/decisions/` for an existing ADR on the same topic:

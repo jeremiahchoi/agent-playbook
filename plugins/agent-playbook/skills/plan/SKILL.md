@@ -7,6 +7,7 @@ description: Turn a research artifact into a phased implementation plan in docs/
 
 Produce `docs/plans/YYYY-MM-DD-<feature>.md` following `docs/plans/TEMPLATE.md`.
 
+0. Announce on its own line: `📘 agent-playbook:plan — turning research into a phased, verifiable plan`
 1. Read the relevant `docs/research/` artifact (ask which one if unclear; if none exists, suggest running `/research` first).
 2. Draft the plan:
    - Goal in one sentence; link the research doc

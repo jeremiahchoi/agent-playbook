@@ -5,7 +5,9 @@ description: Retrofit the current repo to the agent-playbook system — plugin s
 
 # Adopt agent-playbook in this repo
 
-Additive only — never delete or rewrite working content. Learned from real retrofits: **defer to existing conventions; never introduce a second system beside a working one.**
+Announce on its own line: `📘 agent-playbook:adopt — retrofitting this repo (nothing written without your approval)`
+
+Never silently delete or rewrite working content. Learned from real retrofits: **defer to existing conventions; never introduce a second system beside a working one.**
 
 ## 1. Recon (read, don't write)
 
@@ -13,11 +15,22 @@ Additive only — never delete or rewrite working content. Learned from real ret
 - Detect stack and exact commands (package.json / pyproject / Makefile): build, test (single-test form), lint, typecheck, run.
 - Git state: repo? teammates/PR conventions? If shared, do all work on a branch.
 
-## 2. Propose before writing
+## 2. Consolidate redundant docs
 
-Show a keep / trim / add summary and wait for approval. Include which conventions you're preserving.
+Inventory existing markdown (repo root + docs/) and classify each file:
 
-## 3. Create
+- **Knowledge with a clear home** (architecture notes, conventions, real lessons) → keep, or merge into the canonical location if two files cover the same topic (one canonical home per topic; the loser becomes a 2–3 line pointer).
+- **Status/planning notes** (TODO.md, notes.md, old plan files) → propose migrating still-open items to the issue tracker, then archiving the file. Work state rots in markdown.
+- **Empty or near-empty placeholders** → convert to pointers at the live location (deleting invites recreation; leaving them invites a duplicate log).
+- **Stale/superseded** → propose deletion, naming what supersedes each one.
+
+Rules: merge content *before* pointing or deleting; use `git mv`/`git rm` so history survives; present the full old → new mapping in the proposal below. Never act on this section without explicit approval.
+
+## 3. Propose before writing
+
+Show one combined summary — keep / trim / add / consolidate — and wait for approval. Include which conventions you're preserving.
+
+## 4. Create
 
 - **`.claude/settings.json`** — merge into existing if present:
   ```json
@@ -39,6 +52,6 @@ Show a keep / trim / add summary and wait for approval. Include which convention
 - **`AGENTS.md`** — symlink to CLAUDE.md if absent.
 - **`.gitignore`** — add `.claude/settings.local.json`, `CLAUDE.local.md`.
 
-## 4. Finish
+## 5. Finish
 
 Commit on a branch with a summary of what was preserved vs added; suggest a PR for shared repos. Tell the user: teammates now get the skills by clone + workspace trust, nothing to install. Offer (don't do unprompted): backfill 3–5 foundational ADRs from git history if the repo had no decision log.

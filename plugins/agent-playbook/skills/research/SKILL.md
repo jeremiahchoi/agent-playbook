@@ -7,6 +7,7 @@ description: Research the codebase and write a compact artifact to docs/research
 
 Produce `docs/research/YYYY-MM-DD-<topic>.md` following `docs/research/TEMPLATE.md`.
 
+0. Announce on its own line: `📘 agent-playbook:research — researching before touching code`
 1. Restate the question/task in one sentence; confirm with the user if ambiguous.
 2. **Use subagents for the noisy exploration** (searching, reading many files) so raw file contents stay out of this context. Ask them for summaries: relevant files + why, how the flow works, existing patterns to follow.
 3. Check `docs/decisions/` for prior decisions touching this area, and `docs/gotchas/` for relevant domain files.

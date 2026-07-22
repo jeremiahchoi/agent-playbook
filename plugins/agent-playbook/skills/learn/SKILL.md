@@ -5,6 +5,7 @@ description: Capture this session's lessons into docs/gotchas/ or CLAUDE.md. Use
 
 # Learn — capture this session's lessons
 
+0. Announce on its own line: `📘 agent-playbook:learn — scanning this session for lessons worth keeping`
 1. Review this session for:
    - Mistakes I made that a written rule would have prevented
    - Non-obvious facts about this codebase discovered the hard way (APIs that don't work as expected, hidden constraints, misleading names)
