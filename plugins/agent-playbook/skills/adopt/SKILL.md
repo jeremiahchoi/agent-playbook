@@ -15,16 +15,18 @@ Never silently delete or rewrite working content. Learned from real retrofits: *
 - Detect stack and exact commands (package.json / pyproject / Makefile): build, test (single-test form), lint, typecheck, run.
 - Git state: repo? teammates/PR conventions? If shared, do all work on a branch.
 
-## 2. Consolidate redundant docs
+## 2. Consolidate and standardize docs
 
-Inventory existing markdown (repo root + docs/) and classify each file:
+Inventory existing markdown (repo root + docs/) and classify each file. **Standardize by renaming/moving into the playbook layout — don't leave pointer stubs behind.** Target layout: `docs/gotchas/<domain>.md`, `docs/decisions/`, `docs/research/`, `docs/plans/`, plus the repo's own reference docs under `docs/`.
 
-- **Knowledge with a clear home** (architecture notes, conventions, real lessons) → keep, or merge into the canonical location if two files cover the same topic (one canonical home per topic; the loser becomes a 2–3 line pointer).
-- **Status/planning notes** (TODO.md, notes.md, old plan files) → propose migrating still-open items to the issue tracker, then archiving the file. Work state rots in markdown.
-- **Empty or near-empty placeholders** → convert to pointers at the live location (deleting invites recreation; leaving them invites a duplicate log).
-- **Stale/superseded** → propose deletion, naming what supersedes each one.
+- **Knowledge** (architecture notes, conventions, real lessons) → `git mv` into the standard location/name; if two files cover one topic, merge into the survivor and `git rm` the loser.
+- **Status/planning notes** (TODO.md, notes.md, old plan files) → migrate still-open items to the issue tracker, then delete. Work state rots in markdown.
+- **Empty or near-empty placeholders** → delete (their standard replacement now exists, so there's nothing to point at).
+- **Stale/superseded** → delete, naming what supersedes each one.
 
-Rules: merge content *before* pointing or deleting; use `git mv`/`git rm` so history survives; present the full old → new mapping in the proposal below. Never act on this section without explicit approval.
+After moving: `grep` the repo for every old path (markdown links, CLAUDE.md, README, CI configs, code comments) and update references so nothing dangles. Exception — keep the old path as a pointer only when it's referenced from *outside* the repo (published links, external tooling) or the team explicitly wants it; and an actively-used team convention (like a numbered decision log in a master doc) is still respected per step 1, not force-migrated — ask first.
+
+Rules: merge content *before* deleting; use `git mv`/`git rm` so history survives; present the full old → new mapping in the proposal below. Never act on this section without explicit approval.
 
 ## 3. Propose before writing
 

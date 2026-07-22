@@ -8,4 +8,4 @@
 
 > /adopt originally only handled *empty* placeholders — real pre-existing markdown (notes, TODOs, overlapping docs) stuck around untouched and cluttered adopted repos. Consolidation is now an explicit /adopt step: classify every md, merge to one canonical home per topic, migrate status items to the tracker, always with approval. (2026-07, jj feedback)
 
-> Repos accumulate empty placeholder docs (bee: docs/decisions.md and docs/lessons.md, both 0 bytes, both bypassed by the real convention). During retrofit, convert them to pointers at the live location — deleting them invites someone to recreate them; leaving them empty invites a duplicate log. (2026-07, bee retrofit)
+> Pointer stubs were the wrong default for retrofits — jj wants repos *standardized*: git mv docs into the playbook layout, merge duplicates, delete empties, then grep-and-fix every inbound reference (markdown links, CLAUDE.md, CI) so nothing dangles. Pointers only for externally-referenced paths; actively-used team conventions (bee's D-numbers) still win over forced migration. (2026-07, jj feedback superseding the earlier pointer rule from the bee retrofit)
