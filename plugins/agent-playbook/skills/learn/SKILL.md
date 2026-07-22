@@ -13,7 +13,7 @@ description: Scan the current session for reusable lessons and file them into do
 2. For each candidate, pick the destination:
    - **Enforceable by a tool** (lint/format/blockable) → propose a hook or lint rule instead of prose
    - **Applies to every session** → propose a one-line addition to CLAUDE.md (be reluctant — that file is expensive)
-   - **Domain-specific** → append to `docs/gotchas/<domain>.md` (create the file if the domain is new)
+   - **Domain-specific** → append to `docs/gotchas/<domain>.md` (create the file if the domain is new). If the repo already has its own lessons convention (check CLAUDE.md and docs/), follow that instead — never introduce a second system.
 
 3. Format gotcha entries as 1–3 lines, with date and origin:
    > Lesson stated as an instruction — with the why. (YYYY-MM, PR/context)
