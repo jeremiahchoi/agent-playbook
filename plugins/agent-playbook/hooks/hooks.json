@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'agent-playbook workflows are active. Standing policy: (1) for any change touching multiple files or an unfamiliar area, use the research skill, then the plan skill, BEFORE writing implementation code; (2) before declaring non-trivial work done, run the verify-app subagent and report its evidence; (3) when wrapping up, if you made a mistake, were corrected, or settled a decision, proactively use the learn / log-decision skills (they propose drafts for human approval). If a skill exists for an activity, use it.'"
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"
           }
         ]
       }
