@@ -23,6 +23,12 @@ This repo runs its own system — see [docs/decisions/](docs/decisions/) for our
 
 Choose **user** scope when prompted. The skills (`/learn`, `/log-decision`, `/research`, `/plan`) then follow you into every project on your machine, including ones that never adopted the kit. Repo scope and user scope stack fine.
 
+**If it seems like it's not working** (all three found in the field):
+
+- Plugins load at session start — windows opened *before* you installed won't see it. Start a fresh session.
+- Skills are namespaced: type `/agent-playbook:research` (or just `/agent` and autocomplete), not `/research`.
+- Most of the plugin is passive policy — it announces itself with a `📘 agent-playbook:<skill>` line only when a triggering situation comes up or you invoke a skill directly.
+
 **Updates.** Fully automatic: the kit sets `"autoUpdate": true` on the marketplace entry, and Claude Code's background check picks up new commits on its own (verified 2026-07-22 — the plugin updated overnight with zero user action). If updates ever seem stale: enable auto-update once in `/plugin` → Marketplaces → agent-playbook, or run `claude plugin update agent-playbook@agent-playbook` (also works non-interactively as `claude plugin update ...` for cron/CI).
 
 ## Adopt in a repo in ~10 minutes
