@@ -10,3 +10,10 @@ Docs-only repo: `playbook/` (guides for humans) + `kit/` (files teams copy into 
 - Keep it lean: `kit/CLAUDE.md.template` ≤ 60 lines; playbook chapters ≤ ~150 lines. This playbook follows its own advice.
 - Record structural decisions in docs/decisions/ (use /log-decision). Check existing decisions before restructuring.
 - Capture lessons about maintaining this repo with /learn into docs/gotchas/.
+
+## Agent workflows
+
+- Before non-trivial work (multiple files or unfamiliar area): /research, then /plan.
+- Before working in an area: check docs/gotchas/ for its domain file.
+- Before claiming done: run the verify-app agent (.claude/agents/verify-app.md) and report the evidence.
+- At wrap-up: /learn for mistakes/corrections, /log-decision for settled questions (numbered ADRs in docs/decisions/).
