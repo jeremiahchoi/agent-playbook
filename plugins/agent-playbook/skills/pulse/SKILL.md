@@ -27,6 +27,11 @@ Context layer:
 Kit drift (answers "do I need to re-adopt?"):
 - Compare the repo's kit-side files against the current kit (marketplace clone at `~/.claude/plugins/marketplaces/agent-playbook/kit/`, else the public repo): anything the kit now ships that this repo lacks (e.g., a repo adopted before the status line existed)? List each missing piece by name. Customized files (verify-app, settings allowlist) are *supposed* to differ — only flag absent pieces, never content differences.
 
+Version freshness (the definitive "am I on latest?"):
+- Installed: version + SHA from your own session-start bootstrap line, or `~/.claude/plugins/installed_plugins.json`.
+- Latest: `git ls-remote https://github.com/jeremiahchoi/agent-playbook.git main | cut -f1`.
+- Report **current** (SHAs match) or **behind** — if behind, include the fix: `claude plugin update agent-playbook@agent-playbook`, effective next session. If offline, say "not measured".
+
 Activity baseline (so output is judged against real work, not calendar time):
 - `git log --oneline --since="30 days ago" | wc -l` — commits in the last 30 days.
 - Newest artifact date overall vs newest commit date.

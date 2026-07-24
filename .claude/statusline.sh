@@ -24,6 +24,29 @@ model = g("model.display_name") or "Claude"
 cwd = g("workspace.current_dir") or ""
 repo = os.path.basename(cwd) if cwd else "?"
 
+# Installed plugin version, shown as "playbook vX.Y.Z" when discoverable.
+ver = ""
+home = os.path.expanduser("~")
+candidates = []
+try:
+    inst = json.load(open(os.path.join(home, ".claude/plugins/installed_plugins.json")))
+    for entry in inst.get("plugins", {}).get("agent-playbook@agent-playbook", []):
+        p = entry.get("installPath")
+        if p:
+            candidates.append(os.path.join(p, "VERSION"))
+except Exception:
+    pass
+candidates.append(os.path.join(
+    home, ".claude/plugins/marketplaces/agent-playbook/plugins/agent-playbook/VERSION"))
+for c in candidates:
+    try:
+        ver = open(c).read().strip()
+        if ver:
+            break
+    except Exception:
+        continue
+badge = f"📘 playbook v{ver}" if ver else "📘 playbook"
+
 # Context %: first-class field, else derive from used/max, else from the
 # transcript's most recent usage record (input + cache = what the model saw).
 pct = g("context.percent_used")
@@ -62,7 +85,7 @@ if isinstance(pct, (int, float)):
     else:
         ctx = f" │ \033[32m🟢 ctx {p}%\033[0m"
 
-print(f"\033[36m📘 playbook\033[0m │ {repo} │ {model}{ctx}", end="")
+print(f"\033[36m{badge}\033[0m │ {repo} │ {model}{ctx}", end="")
 PY
 )
 exec python3 -c "$CODE"
