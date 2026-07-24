@@ -1,5 +1,7 @@
 # Plugin development
 
+> The desktop app does not render custom status lines — only the terminal CLI footer shows them. In app sessions the context meter and version badge are invisible, so the model-side 📘 announcements and the PreCompact hook are the primary indicator/safety there, not the status line. Don't promise users an always-on meter in the app. (2026-07, jj's session discovered it after we shipped the status line)
+
 > Plugin-shipped content must never unconditionally reference per-repo resources. The SessionStart hook told every session to "run the verify-app subagent," but verify-app only exists after /adopt scaffolds it — in non-adopted repos the policy pointed at a ghost. Anything the plugin says must either ship with the plugin or be conditionally checked at runtime (see hooks/session-start.sh). (2026-07, found by Ray, PR #1)
 
 > Plugin installs are per-environment, not per-user: a user-scope install on a laptop is invisible to cloud/web sessions, which start in a fresh container with an empty ~/.claude. Repo-level `.claude/settings.json` (extraKnownMarketplaces + enabledPlugins) is the only thing that makes a plugin follow a *repo* across environments and teammates. (2026-07, Ray hit this in cloud sessions)
