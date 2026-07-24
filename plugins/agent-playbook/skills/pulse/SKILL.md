@@ -1,32 +1,44 @@
 ---
 name: pulse
-description: Scorecard of how much value the agent-playbook system is generating in this repo — knowledge captured, artifacts produced, freshness, gaps. Use when asked how the playbook/plugin/workflow system is doing or whether it's worth it; also good monthly.
+description: Scorecard of whether the agent-playbook system is actually helping in this repo — knowledge captured, artifacts produced, verification coverage, freshness, and the repeat-correction check. Use when asked how the playbook/plugin/workflow system is doing or whether it's worth it; good monthly.
 ---
 
 # Pulse — is the system earning its keep here?
 
-Announce on its own line: `📘 agent-playbook:pulse — measuring what the system has captured in this repo`
+Announce on its own line: `📘 agent-playbook:pulse — measuring what the system has produced in this repo`
 
-Read-only. Gather with ls/grep, then report.
+Read-only. Gather, then report. **Never guess numbers — if something can't be measured, say "not measured" rather than estimating.**
 
 ## 1. Gather
 
-- **Gotchas**: entries per file in `docs/gotchas/` (entries start with `>`), date of newest entry.
-- **Decisions**: count + newest date — from `docs/decisions/` or the repo's own convention (e.g., numbered decisions in a master doc; detect via CLAUDE.md).
-- **Research/plan artifacts**: counts in `docs/research/` and `docs/plans/` (exclude TEMPLATE), dates; in plans, fraction of phases that carry a **Verify** line.
-- **CLAUDE.md**: line count vs the 60-line budget.
-- **Recency**: newest artifact date overall — is the system alive or was it set up and abandoned?
+Adoption:
+- Is this repo adopted? (`.claude/settings.json` with the plugin keys, `.claude/agents/verify-app.md`, `docs/gotchas/`)
+- `CLAUDE.md` line count vs the 60-line budget.
+
+Output (counts + newest date for each):
+- **Gotchas**: entries across `docs/gotchas/*.md` (lines starting with `>`).
+- **Decisions**: `docs/decisions/` files, or the repo's own convention (detect via CLAUDE.md — e.g. numbered decisions in a master doc).
+- **Research / plans**: files in `docs/research/`, `docs/plans/` (exclude TEMPLATE). In plans, the fraction of phases carrying a **Verify** line.
+
+Activity baseline (so output is judged against real work, not calendar time):
+- `git log --oneline --since="30 days ago" | wc -l` — commits in the last 30 days.
+- Newest artifact date overall vs newest commit date.
 
 ## 2. Report
 
-A short table (metric | value | read), then a plain-English verdict. Reads:
+A compact table (metric | value | read), then a two-line verdict in plain English. How to read it:
 
-- **Gotchas growing in weeks 1–4, then slowing** = healthy (early capture, then fewer repeat mistakes). Zero gotchas after weeks of active work = `/learn` isn't firing or standards are too strict — flag it.
-- **Decisions fresh** = choices are surviving into future sessions. None logged in a month of active work = decisions are evaporating in chat.
-- **Plans with Verify lines on every phase** = the done-means-proven loop is real. Phases without them = flag.
-- **CLAUDE.md flat or shrinking** while gotchas/rules grow = right shape. Growing = the always-loaded file is absorbing what belongs elsewhere.
-- **Stale everything** (no artifacts in 30+ days of commits) = the system is installed but not used — say so bluntly.
+- **Artifacts per unit of work** is the real signal. 40 commits and zero gotchas in 30 days = the capture loop isn't firing. 3 commits and zero gotchas = fine, nothing happened yet.
+- **Gotchas growing early then slowing** = healthy: capture up front, then fewer repeat mistakes. Growing forever = the same class of mistake may be recurring; check whether entries are enforceable (convert to hooks/lint).
+- **Decisions fresh** = choices are surviving into future sessions. None in a month of active work = decisions are evaporating in chat.
+- **Plans with Verify on every phase** = done-means-proven is real. Phases without = flag them by name.
+- **CLAUDE.md flat/shrinking while gotchas grow** = right shape. Growing = the always-loaded file is absorbing what belongs in gotchas, rules, or skills.
+- **Stale everything** (no artifacts while commits continue) = installed but unused. Say so bluntly; don't soften it.
 
-## 3. The metric only a human knows
+## 3. The metric only a human has
 
-End by asking: *"Have you corrected the agent for the same thing twice recently?"* Falling correction rate is the real success metric; artifact counts are proxies for it. If the answer is yes, the miss belongs in gotchas right now — offer to log it.
+Close by asking directly: **"Have you corrected the agent for the same thing twice in the last couple weeks?"**
+
+Falling repeat-correction rate is the actual success measure — artifact counts are proxies for it. If the answer is yes, that miss is a real observed failure: offer to run `learn` on it right now, and note which rung of the [automation ladder](playbook/08-automation.md) would have caught it (description → bootstrap → Stop hook).
+
+Then give a one-line recommendation: keep going as-is, or the single highest-value fix.

@@ -76,6 +76,12 @@ The best knowledge systems store *when to recall* alongside *what to know* (Cogn
 
 *Backed by:* Superpowers (Jesse Vincent), community Stop-hook patterns, Boris Cherny's /go.
 
+### 12. Manage the session, not just the load
+
+Loading discipline (principle 1) is half the job; the other half is what happens as a session runs. Output quality degrades measurably as the window fills — a session at 80% is worse than the same session at 30% with the same prompt ("context rot"). Anthropic names three long-horizon techniques, and all three belong in the workflow: **compaction** with explicit preserve/drop instructions at natural breakpoints (~60%, not the ~83% auto-fire), **structured note-taking** to files that survive compaction (plans, handoff notes — compaction is lossy, files aren't), and **sub-agent architectures** where a subagent spends tens of thousands of tokens and returns 1–2k of distilled findings. Preserve architectural decisions, unresolved bugs, implementation details, and *failed approaches*; drop raw tool output. Automate the watching (status line) — nobody remembers to check.
+
+*Backed by:* Anthropic's effective-context-engineering guidance, Claude Code context docs, community threshold practice.
+
 ---
 
 ## Source library
@@ -97,6 +103,8 @@ The best knowledge systems store *when to recall* alongside *what to know* (Cogn
 | 2026-07-21 | [Compound Engineering](https://every.to/guides/compound-engineering) | Every / Cora (Kieran Klaassen) | Every PR review teaches the system; every bug becomes a prevention system |
 | 2026-07-21 | [AGENTS.md standard](https://agents.md/) | Linux Foundation / multi-vendor | Cross-tool instruction file format; symlink CLAUDE.md ↔ AGENTS.md |
 | 2026-07-21 | [How AI coding agents use ADRs](https://mnemehq.com/insights/how-ai-coding-agents-use-adrs/) | Mneme | ADRs as machine-readable constraints agents check and propose |
+| 2026-07-24 | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) | Anthropic | Compaction / structured note-taking / sub-agent architectures; what to preserve vs drop; subagents return 1–2k distilled tokens |
+| 2026-07-24 | [Claude Code context management](https://claudefa.st/blog/guide/mechanics/context-management) + [context rot](https://www.mindstudio.ai/blog/context-rot-ai-agents-auto-compact-fix) | Community | 80% degradation threshold, ~83% auto-compact fire point, compact-at-breakpoints practice, /context breakdown |
 | 2026-07-22 | [Superpowers](https://blog.fsck.com/2025/10/09/superpowers/) + [repo](https://github.com/obra/superpowers) | Jesse Vincent (obra) | SessionStart bootstrap injection; mandatory-skill-use policy; skills tested on subagents under pressure; mined 2,249 session summaries for skill gaps |
 | 2026-07-22 | [Stop hooks](https://amitkoth.com/claude-code-stop-hooks/) + [task enforcement](https://claudefa.st/blog/tools/hooks/stop-hook-task-enforcement) | Community | Stop hook blocks turn-end until checks pass; stop_hook_active guard; keep checks fast |
 | 2026-07-21 | [Scaling an agency with Claude Code](https://databar.ai/blog/article/how-to-scale-your-agency-with-claude-code) | Databar | Per-client context files that compound per engagement |

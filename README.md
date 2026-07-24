@@ -69,3 +69,6 @@ Then run the loop that makes it compound:
 | [06 — Team adoption](playbook/06-team-adoption.md) | Rollout, ownership, review norms, anti-patterns |
 | [07 — Client-facing work](playbook/07-client-work.md) | Distilling client emails/decisions without wasting tokens; per-client context |
 | [08 — The automation ladder](playbook/08-automation.md) | Making the workflow fire in the background: descriptions → bootstrap → Stop hooks → meta-skills |
+| [09 — Context management](playbook/09-context-management.md) | Compaction with intent, handoff notes, subagents, and a status line that watches for you |
+
+**Seeing it work.** Skills announce themselves as `📘 agent-playbook:<name> — …` when they fire, the status line keeps a `📘 playbook` badge and live context usage on screen, and `/agent-playbook:pulse` reports whether the system is actually producing value in a repo.
