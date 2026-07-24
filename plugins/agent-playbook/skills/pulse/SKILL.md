@@ -20,6 +20,13 @@ Output (counts + newest date for each):
 - **Decisions**: `docs/decisions/` files, or the repo's own convention (detect via CLAUDE.md — e.g. numbered decisions in a master doc).
 - **Research / plans**: files in `docs/research/`, `docs/plans/` (exclude TEMPLATE). In plans, the fraction of phases carrying a **Verify** line.
 
+Context layer:
+- Status line wired? (`.claude/statusline.sh` exists AND `statusLine` key in `.claude/settings.json`)
+- `.claude/HANDOFF.md` in `.gitignore`? Does a handoff note exist, and how fresh is it vs the newest commit?
+
+Kit drift (answers "do I need to re-adopt?"):
+- Compare the repo's kit-side files against the current kit (marketplace clone at `~/.claude/plugins/marketplaces/agent-playbook/kit/`, else the public repo): anything the kit now ships that this repo lacks (e.g., a repo adopted before the status line existed)? List each missing piece by name. Customized files (verify-app, settings allowlist) are *supposed* to differ — only flag absent pieces, never content differences.
+
 Activity baseline (so output is judged against real work, not calendar time):
 - `git log --oneline --since="30 days ago" | wc -l` — commits in the last 30 days.
 - Newest artifact date overall vs newest commit date.
@@ -34,6 +41,8 @@ A compact table (metric | value | read), then a two-line verdict in plain Englis
 - **Plans with Verify on every phase** = done-means-proven is real. Phases without = flag them by name.
 - **CLAUDE.md flat/shrinking while gotchas grow** = right shape. Growing = the always-loaded file is absorbing what belongs in gotchas, rules, or skills.
 - **Stale everything** (no artifacts while commits continue) = installed but unused. Say so bluntly; don't soften it.
+- **Kit drift** = list missing pieces and close with: *"re-run /adopt to pick these up — it proposes only the delta."* No drift = say adoption is current, no re-adopt needed.
+- **Context layer absent** in an active repo = sessions are relying on auto-compact at ~83%, i.e., quality is degrading before anyone notices. Recommend wiring the status line first — it's the piece that makes the other problems visible.
 
 ## 3. The metric only a human has
 

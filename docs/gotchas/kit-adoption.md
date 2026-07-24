@@ -1,5 +1,7 @@
 # Kit adoption
 
+> The playbook repo is always the last repo to get the playbook: we shipped repo-level settings.json guidance and the status line while this repo itself had neither, and this session ran a stale bootstrap. After shipping any kit-side piece, self-apply to agent-playbook and bee in the same round — /pulse's kit-drift check now catches this. (2026-07, found by jj running /pulse)
+
 > Keep this repo/plugin lean — no demo or sample content in the tree. Demos, walkthroughs, and scratch material live in the gitignored `local/` folder. jj was explicit: lightweight beats illustrative. (2026-07, examples/ reverted same day it shipped)
 
 > Retrofits hit repos with existing, working conventions — first real case: bee already had a decision log (D-numbers in docs/research-and-planning.md) and a 55-line scar-tissue CLAUDE.md. The kit must defer, not prescribe: /log-decision and /learn now check for an existing convention before using the kit's format. Never introduce a second system next to a working one. (2026-07, bee retrofit)
