@@ -28,6 +28,7 @@ Choose **user** scope when prompted. The skills (`/learn`, `/log-decision`, `/re
 - Plugins load at session start — windows opened *before* you installed won't see it. Start a fresh session.
 - Skills are namespaced: type `/agent-playbook:research` (or just `/agent` and autocomplete), not `/research`.
 - Most of the plugin is passive policy — it announces itself with a `📘 agent-playbook:<skill>` line only when a triggering situation comes up or you invoke a skill directly.
+- **Works on your laptop but missing in a cloud/web session?** Plugin installs are per-environment: a user-scope install lives on that machine only, and cloud sessions start in a fresh container. The fix is the repo-level `.claude/settings.json` below (that's exactly what it's for) — commit it and any session on that repo, anywhere, picks the plugin up. Run `/agent-playbook:adopt` for the full scaffolding, or commit just the settings file if you only want the skills available.
 
 **Updates.** Fully automatic: the kit sets `"autoUpdate": true` on the marketplace entry, and Claude Code's background check picks up new commits on its own (verified 2026-07-22 — the plugin updated overnight with zero user action). If updates ever seem stale: enable auto-update once in `/plugin` → Marketplaces → agent-playbook, or run `claude plugin update agent-playbook@agent-playbook` (also works non-interactively as `claude plugin update ...` for cron/CI).
 
