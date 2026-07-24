@@ -14,6 +14,6 @@ Add chapter 09 plus machinery: a `handoff` skill (structured note-taking to `.cl
 
 ## Consequences
 
-- The status line requires `jq` and is opt-out during `/adopt`.
+- The status line requires only python3 (jq dependency removed same week — no manual installs allowed in the adoption path) and is opt-out during `/adopt`.
 - Handoff notes are gitignored session state; durable knowledge still goes to gotchas/decisions/plans.
 - Adds a fourth thing users can see the plugin doing, which also serves the visibility goal.

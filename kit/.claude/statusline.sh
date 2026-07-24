@@ -1,42 +1,68 @@
 #!/usr/bin/env bash
 # agent-playbook status line: shows that the workflow system is active, plus
 # live context usage so you can compact/hand off before quality degrades.
+# No dependencies beyond python3 (preinstalled on macOS and most Linux).
 # Enable in .claude/settings.json:
 #   "statusLine": { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/statusline.sh" }
-set -uo pipefail
+CODE=$(cat <<'PY'
+import json, os, sys
 
-input=$(cat)
-j() { printf '%s' "$input" | jq -r "$1 // empty" 2>/dev/null; }
+try:
+    data = json.load(sys.stdin)
+except Exception:
+    data = {}
 
-model=$(j '.model.display_name')
-dir=$(basename "$(j '.workspace.current_dir')" 2>/dev/null)
-transcript=$(j '.transcript_path')
+def g(path, default=None):
+    cur = data
+    for k in path.split("."):
+        if not isinstance(cur, dict) or k not in cur:
+            return default
+        cur = cur[k]
+    return cur
 
-# Context usage: prefer a first-class field, else derive from the transcript's
-# most recent usage record (input + cache tokens = what the model actually saw).
-pct=$(j '.context.percent_used')
-if [ -z "$pct" ]; then
-  used=$(j '.context.used_tokens')
-  if [ -z "$used" ] && [ -n "$transcript" ] && [ -f "$transcript" ]; then
-    used=$(tail -n 400 "$transcript" 2>/dev/null | jq -s '
-      [ .[] | .message?.usage? // empty
-        | (.input_tokens // 0) + (.cache_read_input_tokens // 0)
-          + (.cache_creation_input_tokens // 0) ]
-      | max // empty' 2>/dev/null)
-  fi
-  limit=$(j '.context.max_tokens'); limit=${limit:-200000}
-  if [ -n "${used:-}" ] && [ "${used:-0}" -gt 0 ] 2>/dev/null; then
-    pct=$(( used * 100 / limit ))
-  fi
-fi
+model = g("model.display_name") or "Claude"
+cwd = g("workspace.current_dir") or ""
+repo = os.path.basename(cwd) if cwd else "?"
+
+# Context %: first-class field, else derive from used/max, else from the
+# transcript's most recent usage record (input + cache = what the model saw).
+pct = g("context.percent_used")
+if pct is None:
+    used = g("context.used_tokens")
+    limit = g("context.max_tokens") or 200000
+    if used is None:
+        tp = g("transcript_path")
+        if tp and os.path.isfile(tp):
+            best = 0
+            try:
+                with open(tp, "rb") as f:
+                    tail = f.read()[-200000:].decode("utf-8", "ignore")
+                for line in tail.splitlines():
+                    try:
+                        u = json.loads(line).get("message", {}).get("usage", {})
+                        t = (u.get("input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+                             + u.get("cache_creation_input_tokens", 0))
+                        best = max(best, t)
+                    except Exception:
+                        continue
+            except Exception:
+                best = 0
+            used = best or None
+    if used:
+        pct = int(used * 100 / limit)
 
 # Thresholds from playbook/09: <50 fine, 50-70 wrap up, >70 act now.
-ctx=""
-if [ -n "${pct:-}" ]; then
-  if   [ "$pct" -ge 70 ]; then ctx=$(printf '\033[31m🔴 ctx %s%% — /compact or /agent-playbook:handoff now\033[0m' "$pct")
-  elif [ "$pct" -ge 50 ]; then ctx=$(printf '\033[33m🟡 ctx %s%% — wrap up this thread\033[0m' "$pct")
-  else                         ctx=$(printf '\033[32m🟢 ctx %s%%\033[0m' "$pct")
-  fi
-fi
+ctx = ""
+if isinstance(pct, (int, float)):
+    p = int(pct)
+    if p >= 70:
+        ctx = f" │ \033[31m🔴 ctx {p}% — /compact or /agent-playbook:handoff now\033[0m"
+    elif p >= 50:
+        ctx = f" │ \033[33m🟡 ctx {p}% — wrap up this thread\033[0m"
+    else:
+        ctx = f" │ \033[32m🟢 ctx {p}%\033[0m"
 
-printf '\033[36m📘 playbook\033[0m │ %s │ %s%s' "${dir:-?}" "${model:-Claude}" "${ctx:+ │ $ctx}"
+print(f"\033[36m📘 playbook\033[0m │ {repo} │ {model}{ctx}", end="")
+PY
+)
+exec python3 -c "$CODE"
