@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.2 — 2026-07-24
+**Context alerts that actually fire.** New UserPromptSubmit hook injects a warning into the conversation at 70%/85% (or 400k/700k absolute) — works in the desktop app, where status lines don't render and a session cannot otherwise perceive its own usage. Shared `context-check.py` fixes 1M-window math (was reporting 456% on a 912k session), clamps to 0–100, and infers window size; status line reuses it with an inline fallback.
+
 ## 0.4.1 — 2026-07-24
 PreCompact hook: every compaction (auto or manual) now receives handoff-shaped preserve/drop instructions, so session state survives mechanically even when nobody noticed the window filling. Gotcha: desktop app doesn't render status lines — CLI-only.
 
