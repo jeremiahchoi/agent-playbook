@@ -23,5 +23,5 @@
 
 End-to-end check that proves the feature works (not just that tests pass).
 
-<!-- Written by /plan, executed phase-by-phase in a fresh session.
+<!-- Executed phase-by-phase in a fresh session.
      Every phase MUST have a verification step. Filename: YYYY-MM-DD-feature.md -->

@@ -1,6 +1,6 @@
 # Gotchas
 
-Append-only lessons, one file per domain (e.g. `frontend.md`, `api.md`, `infra.md`). Maintained by `/learn`.
+Append-only lessons, one file per domain (e.g. `frontend.md`, `api.md`, `infra.md`). Maintained by hand at task wrap-up.
 
 Entry format — 1–3 lines, dated, traceable:
 

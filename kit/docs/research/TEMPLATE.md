@@ -25,5 +25,5 @@ Prose description of the flow/architecture relevant to the task. Reference files
 
 - Things a human should resolve before planning
 
-<!-- Written by /research. Snapshot, not a living doc — the date says how fresh it is.
+<!-- Snapshot, not a living doc — the date says how fresh it is.
      Filename: YYYY-MM-DD-topic.md -->

@@ -35,8 +35,8 @@ Never:
 
 - Before architectural changes: check docs/decisions/
 - Before working in DOMAIN_X: read docs/gotchas/DOMAIN_X.md
-- Non-trivial work: /research then /plan before implementing
-- Made a mistake this session? Run /learn before finishing. Made a judgment call? /log-decision.
+- Non-trivial work: research the area and write the plan down before implementing
+- Made a mistake this session? Add a docs/gotchas/ entry before finishing. Made a judgment call? Write an ADR in docs/decisions/.
 
 ## Style
 
