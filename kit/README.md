@@ -4,7 +4,7 @@ Everything here goes to your repo root, **once**. These are the project-state fi
 
 There is no plugin and nothing to install — the workflow is instructions, not machinery. `CLAUDE.md` tells the agent to research before implementing, log decisions, and record gotchas; the agent does those steps directly. Copies never auto-update, which is the point: each repo's copy drifts to fit that repo.
 
-Placeholders are ALL_CAPS — search for them after copying.
+Placeholders are ALL_CAPS — search for them after copying. `bin/adopt.sh` (repo root) does the copy for you: no-overwrite, `--dry-run`, and it prints the placeholders left to fill.
 
 | File | What it is | What to do |
 |---|---|---|

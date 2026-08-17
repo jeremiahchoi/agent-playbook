@@ -23,6 +23,16 @@ Why it was dropped: the machinery added an install surface, a per-environment fa
 
 ## Adopt in a repo in ~10 minutes
 
+**Fastest path — the adopt script.** From the repo you're adopting:
+
+```
+~/path/to/agent-playbook/bin/adopt.sh          # or: bin/adopt.sh /path/to/repo
+```
+
+It copies the kit in, renames `CLAUDE.md.template` → `CLAUDE.md`, symlinks `AGENTS.md`, never overwrites existing files, and ends by listing the ALL_CAPS placeholders you still need to fill. `--dry-run` previews. It does not touch git — review and commit yourself.
+
+**Manual path:**
+
 1. Copy the contents of `kit/` into your repo root (`.claude/`, `docs/`, `CLAUDE.md.template`).
 2. Fill in `CLAUDE.md.template` (project description, exact commands, stack, boundaries) and rename it `CLAUDE.md`. Keep it ≤ 60 lines.
 3. Symlink it for other tools: `ln -s CLAUDE.md AGENTS.md`.
