@@ -6,7 +6,7 @@ Claude Code has five mechanisms for giving an agent standing knowledge. They dif
 |---|---|---|---|
 | `CLAUDE.md` / unscoped rules | Every session, always | Highest | Only what every session needs |
 | Path-scoped rules (`.claude/rules/*.md` with `paths:` frontmatter) | When the agent touches matching files | Medium | Per-area conventions (frontend rules load only for frontend files) |
-| Skills (`.claude/skills/<name>/SKILL.md`) | Name+description always; body only on invocation | Low | Procedures: deploy checklist, release flow, the logging skills |
+| Skills (`.claude/skills/<name>/SKILL.md`) | Name+description always; body only on invocation | Low | Procedures: deploy checklist, release flow, logging routines |
 | Hooks (`.claude/settings.json`) | Never enters context; runs deterministically | ~Zero | Anything enforceable: format-after-edit, block writes to migrations |
 | Subagents (`.claude/agents/*.md`) | Isolated context; only the summary returns | ~Zero until used | Research, review, verification without polluting the main session |
 

@@ -21,7 +21,7 @@ Same mini-ADR format, plus a source reference so the exact wording is findable l
 
 > **Source:** Client approved scope cut — J. Smith email, 2026-07-14, "Re: Phase 2 scope"
 
-The kit's `0000-client-template.md` adds this line. Log via `/log-decision` the moment an email or call settles something: approvals, scope changes, deadline shifts, "the client prefers X." This ends the "the client said something in some thread" archaeology — and protects you when scope is disputed, because the entry points at the evidence.
+The kit's `0000-client-template.md` adds this line. Log a decision entry the moment an email or call settles something: approvals, scope changes, deadline shifts, "the client prefers X." This ends the "the client said something in some thread" archaeology — and protects you when scope is disputed, because the entry points at the evidence.
 
 ## Per-client context files
 
@@ -46,7 +46,7 @@ When you need the exact wording — a scope dispute, a quoted commitment — pul
 The flow for a decision-heavy client email:
 
 1. Email arrives → human (or an agent with inbox access) identifies it contains a decision.
-2. `/log-decision` distills it: decision, consequences, source line.
+2. A decision entry distills it: decision, consequences, source line.
 3. The thread stays in the inbox. Future sessions read the 20-line ADR, not the thread.
 
 ## What not to do

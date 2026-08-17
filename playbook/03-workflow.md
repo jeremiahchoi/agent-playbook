@@ -4,7 +4,7 @@ For any task you couldn't describe as a one-sentence diff, split the work into t
 
 Why: agents fail most expensively by solving the wrong problem with a full context window. Artifacts let you review and correct a one-page document instead of babysitting a 200k-token session — and they're what teammates can actually pick up.
 
-## Phase 1 — Research (`/research`)
+## Phase 1 — Research
 
 Fresh session, plan mode. The agent explores the codebase — using **subagents** for the noisy reading so raw file contents never hit the main context — and writes `docs/research/YYYY-MM-DD-topic.md`:
 
@@ -17,7 +17,7 @@ Fresh session, plan mode. The agent explores the codebase — using **subagents*
 
 Human reviews one page. Wrong assumptions die here, where they're cheap.
 
-## Phase 2 — Plan (`/plan`)
+## Phase 2 — Plan
 
 Fresh session reads the research doc and writes `docs/plans/YYYY-MM-DD-feature.md`:
 

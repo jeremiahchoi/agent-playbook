@@ -1,13 +1,13 @@
 # 02 — Logging knowledge: decisions, gotchas, research, plans
 
-Four log types, each with a home, a format, and a skill that maintains it. The unifying rule: **logs are written by the agent as a byproduct of work, never as separate homework.** That's the only way they stay alive on a team.
+Four log types, each with a home, a format, and a wrap-up habit that maintains it. The unifying rule: **logs are written by the agent as a byproduct of work, never as separate homework.** That's the only way they stay alive on a team.
 
 | What | Where | Format | Maintained by |
 |---|---|---|---|
-| Decisions | `docs/decisions/NNNN-slug.md` | Mini-ADR, ≤ 25 lines | `/log-decision` — agent proposes, human approves |
-| Gotchas / lessons | `docs/gotchas/<domain>.md` | Append-only, 1–3 lines per entry | `/learn` at end of session |
-| Research | `docs/research/YYYY-MM-DD-topic.md` | "What I learned" artifact | `/research` |
-| Plans | `docs/plans/YYYY-MM-DD-feature.md` | Phased steps + per-phase verification | `/plan` |
+| Decisions | `docs/decisions/NNNN-slug.md` | Mini-ADR, ≤ 25 lines | agent proposes at wrap-up, human approves |
+| Gotchas / lessons | `docs/gotchas/<domain>.md` | Append-only, 1–3 lines per entry | logged at end of session |
+| Research | `docs/research/YYYY-MM-DD-topic.md` | "What I learned" artifact | written before non-trivial work |
+| Plans | `docs/plans/YYYY-MM-DD-feature.md` | Phased steps + per-phase verification | written before implementation |
 
 ## What deliberately has no markdown home
 
@@ -41,8 +41,8 @@ Covered in [03 — Workflow](03-workflow.md). The short version: these are the *
 
 The system above is inert without the ritual:
 
-1. Agent makes a mistake → before the session ends, `/learn` files the lesson (gotcha, CLAUDE.md line, or hook).
-2. A judgment call gets made → `/log-decision`.
+1. Agent makes a mistake → before the session ends, file the lesson (gotcha, CLAUDE.md line, or hook).
+2. A judgment call gets made → log it as a decision entry.
 3. Code review catches an agent pattern → the correction goes into CLAUDE.md, ideally automated (Boris Cherny's team tags `@.claude` on PRs and a GitHub Action commits the correction).
 
 Measure it the way Cherny does: your correction rate should visibly drop over weeks. If you're correcting the same thing twice, the first correction didn't get captured.

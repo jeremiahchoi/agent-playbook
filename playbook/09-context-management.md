@@ -38,8 +38,8 @@ A sub-agent burns tens of thousands of tokens exploring and returns 1,000–2,00
 
 Nobody remembers to check `/context` — and critically, **a session cannot perceive its own context usage**. Telling an agent "write a handoff at 70%" is asking it to react to an event it can't see; that policy silently never fires. Perception has to be injected:
 
-- **The plugin's UserPromptSubmit hook** measures the transcript on every message and injects a warning at 70%/85% — or 400k/700k tokens absolute, because 70% of a 1M window (700k) is long past where quality degrades. This works everywhere, including the desktop app.
-- **The kit's status line** (`.claude/statusline.sh`) keeps usage on screen — green under 50%, yellow 50–70%, red past 70%. Terminal CLI only: **the desktop app does not render status lines**, so treat it as a CLI perk, not the safety net.
-- **The PreCompact hook** is the last line: whenever compaction fires (auto or manual), it forces the summary to preserve goal, state, file paths, decisions, and ruled-out approaches while dropping re-readable tool output.
+- **A UserPromptSubmit hook** that measures the transcript on every message and injects a warning at 70%/85% — or 400k/700k tokens absolute, because 70% of a 1M window (700k) is long past where quality degrades. This works everywhere, including the desktop app.
+- **A status-line script** keeps usage on screen — green under 50%, yellow 50–70%, red past 70%. Terminal CLI only: **the desktop app does not render status lines**, so treat it as a CLI perk, not the safety net.
+- **A PreCompact hook** is the last line: whenever compaction fires (auto or manual), have it force the summary to preserve goal, state, file paths, decisions, and ruled-out approaches while dropping re-readable tool output.
 
 Percentage thresholds assume a 200k window; on 1M-context models use the absolute floors instead. Never trust a tool that reports context without knowing the real window size.

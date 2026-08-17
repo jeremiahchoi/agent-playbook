@@ -5,7 +5,7 @@ The tooling is the easy part. Adoption lives or dies on two things: a five-minut
 ## Rollout path
 
 **Week 1 — one repo, the kit, one champion.**
-Copy `kit/` in, fill the CLAUDE.md template (≤ 60 lines), wire `verify-app` to real commands, commit. The workflow skills arrive via the agent-playbook plugin pinned in `settings.json` — teammates get them (and future updates) automatically on workspace trust, no install step. The champion runs the compounding loop personally: every agent mistake → `/learn`; every judgment call → `/log-decision`.
+Copy `kit/` in (`bin/adopt.sh` scripts it), fill the CLAUDE.md template (≤ 60 lines), wire `verify-app` to real commands, commit. The workflow practices live in the checked-in context files — teammates get them on checkout, no install step. The champion runs the compounding loop personally: every agent mistake → a dated gotchas entry; every judgment call → a decision-log entry.
 
 **Weeks 2–3 — make capture visible.**
 Demo in standup/Slack when a captured gotcha saves someone. Cognition's observation: adoption spreads when engineers *see teammates' results*, not when they're told to adopt. Start requiring plans (`docs/plans/`) for non-trivial agent work and reviewing plans instead of only PRs.
@@ -22,7 +22,7 @@ Add the PR-review capture loop (tag `@.claude` → GitHub Action commits the cor
 
 ## Measure whether it's working
 
-Run `/pulse` in the repo — it scans the artifacts (gotcha entries, decisions, plans with verification, CLAUDE.md budget) and reports a scorecard against the targets below.
+Periodically scan the artifacts (gotcha entries, decisions, plans with verification, CLAUDE.md budget) and score them against the targets below.
 
 - **Correction rate** — are you correcting the agent for the same thing twice? Then the first correction wasn't captured. This number should visibly fall over weeks.
 - **CLAUDE.md size** — should stay flat or shrink while gotchas/rules/hooks grow. Growth in the always-loaded file is a smell.

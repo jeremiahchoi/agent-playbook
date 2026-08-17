@@ -2,21 +2,21 @@
 
 "I want to use Claude normally and have the workflow run in the background" is the right goal — and the top practitioners get there with explicit machinery, not hope. Five rungs, each stronger and costlier than the last. **Climb only when the rung below observably misses.**
 
-## L1 — Proactive skill descriptions (shipped in the plugin)
+## L1 — Proactive skill descriptions
 
-The description is what the model matches when deciding to self-apply a skill. "Run at the end of any session where…" reads fine in a menu but never fires; "Use PROACTIVELY, without being asked, when…" does. All plugin skills are written this way.
+The description is what the model matches when deciding to self-apply a skill. "Run at the end of any session where…" reads fine in a menu but never fires; "Use PROACTIVELY, without being asked, when…" does. Write any skill you keep this way (the kit's `verify-app` agent is an example).
 
 ## L2 — Standing CLAUDE.md policy (shipped in the kit)
 
 A few lines of standing orders ("non-trivial work: research → plan before implementing; run verify-app before claiming done"). Advisory, but it stacks with L1 — two independent nudges toward the same behavior.
 
-## L3 — SessionStart bootstrap (shipped in the plugin)
+## L3 — SessionStart bootstrap
 
-Superpowers' core mechanism, and the reason it feels like Claude "just does it": a SessionStart hook injects the working policy into context at the start of *every* session, including after `/clear`. Ours injects one short paragraph (~60 tokens/session — the price of proactivity) restating the policy and the mandatory-use rule: *if a skill exists for an activity, use it.*
+Superpowers' core mechanism, and the reason it feels like Claude "just does it": a SessionStart hook injects the working policy into context at the start of *every* session, including after `/clear`. Keep the injection to one short paragraph (~60 tokens/session — the price of proactivity) restating the policy and the mandatory-use rule: *if a skill exists for an activity, use it.*
 
 ## L4 — Stop hooks: deterministic tripwires
 
-When L1–L3 still miss (e.g., sessions keep ending without a `/learn` pass after obvious mistakes), stop asking nicer and make it mechanical. A Stop hook runs a script when Claude tries to end its turn; exit 2 with a reason forces Claude to keep working:
+When L1–L3 still miss (e.g., sessions keep ending without a lessons-capture pass after obvious mistakes), stop asking nicer and make it mechanical. A Stop hook runs a script when Claude tries to end its turn; exit 2 with a reason forces Claude to keep working:
 
 ```json
 {
